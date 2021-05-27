@@ -11,6 +11,7 @@ public class Service implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "service_name")
     private String serviceName;
     @ManyToOne
     private Employee employee;
