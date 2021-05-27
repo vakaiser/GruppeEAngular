@@ -1,5 +1,6 @@
 package at.htlgkr.dto2.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +15,8 @@ public class Service implements Serializable {
     @Column(name = "service_name")
     private String serviceName;
     @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
     private Date date;
     private String longitude;

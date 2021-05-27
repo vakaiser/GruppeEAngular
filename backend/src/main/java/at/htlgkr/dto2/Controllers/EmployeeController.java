@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @Controller
 public class EmployeeController {
     private final EmployeeRepository employeeRepository;
