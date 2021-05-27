@@ -14,6 +14,9 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    @OneToMany
+
+    private String longitude;
+    private String latitude;
+    @OneToMany (mappedBy = "employee")
     private List<Service> services;
 }
