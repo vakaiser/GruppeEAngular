@@ -1,2 +1,0 @@
-INSERT INTO employee (`id`, `latitude`, `longitude`, `name`) VALUES ('0', '47.0', '16.0', 'Employee Name');
-INSERT INTO service (`address`, `date`, `employee_id`, `name`) VALUES ('An address', '01-01-2000', '0', 'A name');
