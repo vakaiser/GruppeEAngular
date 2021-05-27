@@ -15,7 +15,8 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     RouterModule.forRoot([
       {path: 'employee-list', component: EmployeesListComponent},
-      {path: 'service-list', component: ServiceComponentComponent}
+      {path: 'service-list', component: ServiceComponentComponent},
+      {path: '', redirectTo: '/employee-list', pathMatch: 'full'}
     ])
   ],
   providers: [],

@@ -29,7 +29,7 @@ export class EmployeesListComponent implements OnInit {
       }, {
         title: "Services",
         data: "services",
-        render: function(data, type, row, meta) {return "<a href=\"/services?employeeId="+row.id+"\">"+row.services.length+"</a>";}
+        render: function(data, type, row, meta) {return "<a href=\"/service-list?employeeId="+row.id+"\">"+row.services.length+"</a>";}
       }]
     };
   }
