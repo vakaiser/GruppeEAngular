@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './map/map.component';
 import {AgmCoreModule} from "@agm/core";
 import {environment} from "../environments/environment";
+import { AddServiceComponent } from './add-service/add-service.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 console.log(environment.GM_API_KEY)
 @NgModule({
   imports: [
@@ -27,6 +29,8 @@ console.log(environment.GM_API_KEY)
     RouterModule.forRoot([
       {path: 'employee-list', component: EmployeesListComponent},
       {path: 'service-list', component: ServiceListComponent},
+      {path: 'add-employee', component: AddEmployeeComponent},
+      {path: 'add-service', component: AddServiceComponent},
       {path: 'edit-employee', component: EditEmployeeComponent},
       {path: 'edit-service', component: EditServiceComponent},
       {path: 'service-component', component: ServiceComponentComponent},
@@ -35,7 +39,7 @@ console.log(environment.GM_API_KEY)
     ])
   ],
   providers: [],
-  declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, ServiceComponentComponent, MapComponent],
+  declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, ServiceComponentComponent, MapComponent, AddServiceComponent, AddEmployeeComponent],
 
   exports: [RouterModule],
   bootstrap: [AppComponent]

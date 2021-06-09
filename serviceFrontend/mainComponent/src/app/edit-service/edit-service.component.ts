@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Address, Employee, EmployeeService, Lonlat} from "../employee.service";
+import {Employee, EmployeeService} from "../employee.service";
 import {Service, ServiceService} from "../service.service";
 import {NgForm} from "@angular/forms";
+import {Address, LocationIQService, Lonlat} from "../location-iq.service";
 
 @Component({
   selector: 'app-edit-service',
@@ -13,11 +14,13 @@ import {NgForm} from "@angular/forms";
 export class EditServiceComponent implements OnInit {
 
   service: Service | undefined;
-  serviceId: Number = -1;
-  address: String = "";
+  serviceId: number = -1;
+  address: string = "";
   constructor(private route : ActivatedRoute,
               private router : Router,
-              private serviceService: ServiceService, private http: HttpClient) { }
+              private serviceService: ServiceService,
+              private http: HttpClient,
+              private locationIQService : LocationIQService) { }
 
   onSave(f: NgForm): void {
     if (this.serviceId == -1)
@@ -27,17 +30,17 @@ export class EditServiceComponent implements OnInit {
 
     var service = this.service as Service;
     if (f.value.serviceName !== "")
-      service.serviceName = f.value.serviceName as String;
+      service.serviceName = f.value.serviceName as string;
     if (f.value.date !== "")
       service.date = f.value.date as Date;
     if (f.value.longitude !== "")
-      service.longitude = f.value.longitude as Number;
+      service.longitude = f.value.longitude as number;
     if (f.value.latitude !== "")
-      service.latitude = f.value.latitude as Number;
+      service.latitude = f.value.latitude as number;
     console.log(service)
 
     const body = service;
-    this.serviceService.puServiceInfo(this.serviceId, service).subscribe(data => {
+    this.serviceService.putServiceInfo(this.serviceId, service).subscribe(data => {
       this.router.navigate(['/service-list', {serviceId: service.employeeId}]);
     });
   }
@@ -46,18 +49,16 @@ export class EditServiceComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.serviceId = params['serviceId'];
       this.serviceService.getServiceInfo(this.serviceId).subscribe((data: Service)=>{
-        this.getAddress(data)
+        this.locationIQService.getAddress({lat: data.latitude, lon: data.longitude}, (x:Address) =>{
+          this.address=x.address;
+          this.service = data;
+        })
       })
     });
   }
 
-  getAddress(data: Service) : void {
-    this.http.get<Address>("http://localhost:8081/Location/getAddress?lon="+ data.longitude+"&lat="+data.latitude).subscribe((x:Address) =>{
-      this.address=x.address; this.service = data;});
-  }
-
   addressButtonEvent(address: string) : void {
     if(this.service == undefined) return;
-    this.http.get<Lonlat>("http://localhost:8081/Location/getGPS?address="+ address).subscribe((data: Lonlat) => {(this.service as Service).latitude=data.lat; (this.service as Service).longitude=data.lon})
+    this.locationIQService.getGps({address: address}, (data: Lonlat) => {(this.service as Service).latitude=data.lat; (this.service as Service).longitude=data.lon})
   }
 }

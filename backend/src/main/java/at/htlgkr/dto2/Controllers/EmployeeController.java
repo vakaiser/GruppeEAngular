@@ -1,5 +1,6 @@
 package at.htlgkr.dto2.Controllers;
 
+import at.htlgkr.dto2.Dtos.EmployeeDto;
 import at.htlgkr.dto2.Entities.Employee;
 import at.htlgkr.dto2.Exceptions.Dto2ResourceNotFoundException;
 import at.htlgkr.dto2.Repositories.EmployeeRepository;
@@ -33,8 +34,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/serviceBackend/employees")
-    @ResponseBody Employee postEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    @ResponseBody Employee postEmployee(@RequestBody EmployeeDto employee) {
+        return employeeRepository.save(employee.toEmployee());
     }
 
     @PutMapping("/serviceBackend/employees/{employeeId}")

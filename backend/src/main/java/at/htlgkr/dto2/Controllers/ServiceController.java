@@ -1,9 +1,11 @@
 package at.htlgkr.dto2.Controllers;
 
+import at.htlgkr.dto2.Dtos.ServiceDto;
 import at.htlgkr.dto2.Entities.Service;
 import at.htlgkr.dto2.Exceptions.Dto2BadRequestException;
 import at.htlgkr.dto2.Exceptions.Dto2InternalServerErrorException;
 import at.htlgkr.dto2.Exceptions.Dto2ResourceNotFoundException;
+import at.htlgkr.dto2.Repositories.EmployeeRepository;
 import at.htlgkr.dto2.Repositories.ServiceRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,9 +19,11 @@ import java.util.Optional;
 @Controller
 public class ServiceController {
     private final ServiceRepository serviceRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public ServiceController(ServiceRepository serviceRepository) {
+    public ServiceController(ServiceRepository serviceRepository, EmployeeRepository employeeRepository) {
         this.serviceRepository = serviceRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     @GetMapping("/serviceBackend/services")
@@ -28,8 +32,8 @@ public class ServiceController {
     }
 
     @PostMapping("/serviceBackend/services")
-    @ResponseBody Service postService(Service service) {
-        return serviceRepository.save(service);
+    @ResponseBody Service postService(@RequestBody ServiceDto service) {
+        return serviceRepository.save(service.toService(employeeRepository));
     }
 
     @DeleteMapping("/serviceBackend/services/{serviceId}")
