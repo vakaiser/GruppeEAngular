@@ -5,10 +5,12 @@ import at.htlgkr.dto2.Exceptions.Dto2BadRequestException;
 import at.htlgkr.dto2.Exceptions.Dto2InternalServerErrorException;
 import at.htlgkr.dto2.Exceptions.Dto2ResourceNotFoundException;
 import at.htlgkr.dto2.Repositories.ServiceRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
@@ -30,10 +32,13 @@ public class ServiceController {
     }
 
     @DeleteMapping("/serviceBackend/services/{serviceId}")
-    void deleteService(@PathVariable Integer serviceId) {
-        if (!serviceRepository.findById(serviceId).isPresent())
-            throw new Dto2BadRequestException("Service cannot be deleted");
-        serviceRepository.deleteById(serviceId);
+    ResponseEntity deleteService(@PathVariable Integer serviceId) {
+        Optional<Service> semp = serviceRepository.findById(serviceId);
+        if(semp.isPresent()) {
+            serviceRepository.delete(semp.get());
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping("/serviceBackend/services/{serviceId}")

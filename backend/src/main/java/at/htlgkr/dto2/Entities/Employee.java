@@ -2,6 +2,7 @@ package at.htlgkr.dto2.Entities;
 
 import at.htlgkr.dto2.Exceptions.Dto2BadRequestException;
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +18,6 @@ public class Employee implements Serializable {
 
     private String longitude;
     private String latitude;
-    @OneToMany (mappedBy = "employee")
+    @OneToMany (mappedBy = "employee", cascade = CascadeType.REMOVE)
     private List<Service> services;
 }
