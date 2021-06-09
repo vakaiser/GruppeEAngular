@@ -14,7 +14,7 @@ public class LocationIQParser {
         this.restTemplate = new RestTemplate();
     }
 
-    public String getAdress(String lon, String lat)
+    public String getAddress(String lon, String lat)
     {
         String address =restTemplate.getForObject("https://eu1.locationiq.com/v1/reverse.php?key="+ accessToken +"&lat="+ lat +"&lon="+ lon +"&format=json", String.class);
         ObjectMapper objectMapper = new ObjectMapper();
