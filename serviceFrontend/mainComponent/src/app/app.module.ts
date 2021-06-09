@@ -16,7 +16,7 @@ import {AgmCoreModule} from "@agm/core";
 import {environment} from "../environments/environment";
 import { AddServiceComponent } from './add-service/add-service.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
-console.log(environment.GM_API_KEY)
+
 @NgModule({
   imports: [
     DataTablesModule,
