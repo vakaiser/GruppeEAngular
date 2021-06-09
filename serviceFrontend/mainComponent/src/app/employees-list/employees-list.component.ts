@@ -33,7 +33,17 @@ export class EmployeesListComponent implements OnInit {
       }, {
         title: "Edit",
         render: function(data, type, row, meta) {return "<a href=\"/edit-employee?employeeId="+row.id+"\">Edit</a>";}
+      }, {
+        title: "Delete",
+        render: function(data, type, row, meta) {return "<a [routerLink]=\"\" (click)=\"deleteEmployee("+row.id+")\">Delete</a>";}
       }]
     };
+  }
+
+  deleteEmployee(id: number){
+    ajax: {
+      url: "http://localhost:8080/serviceBackend/employees/"+ id,
+        dataSrc: ""
+    }
   }
 }
