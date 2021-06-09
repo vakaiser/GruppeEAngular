@@ -9,6 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 export class MapComponent implements OnInit {
   latitude: number = 0;
   longitude: number = 0;
+  label: string = "";
 
   constructor(private route : ActivatedRoute, private cdRef:ChangeDetectorRef) { }
 
@@ -16,6 +17,7 @@ export class MapComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.latitude = Number(params['lat']);
       this.longitude = Number(params['long']);
+      this.label = params['label'];
     });
   }
 }

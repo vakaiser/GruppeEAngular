@@ -47,6 +47,9 @@ export class EmployeesListComponent implements OnInit{
       }, {
         title: "Delete",
         render: function(data, type, row, meta) {return "<a attr-id='"+ row.id +"' class='delete' href='javascript:void(0)'>Delete</a>";}
+      }, {
+        title: "Map",
+        render: function(data, type, row, meta) {return "<a href=\"/map?lat="+row.latitude+"&long="+row.longitude+"&label="+row.name+"\">Map</a>";}
       }]
     };
   }
