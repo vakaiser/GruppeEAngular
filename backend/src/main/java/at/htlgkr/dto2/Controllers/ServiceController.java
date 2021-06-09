@@ -42,7 +42,7 @@ public class ServiceController {
     }
 
     @PutMapping("/serviceBackend/services/{serviceId}")
-    @ResponseBody Service putService(Service service, @PathVariable Integer serviceId) {
+    @ResponseBody Service putService(@RequestBody Service service, @PathVariable Integer serviceId) {
         return serviceRepository.findById(serviceId)
                 .map(oldService -> {
                     oldService.setDate(service.getDate());

@@ -1,1 +1,8 @@
-<p>edit-service works!</p>
+<form [hidden]="service == undefined" #f="ngForm" (ngSubmit)="onSave(f)" novalidate>
+  <label for="serviceName">Name: </label><input name="serviceName" value="{{service?.serviceName}}" id="serviceName" ngModel required #serviceName="ngModel"><br>
+  <label for="date">Date: </label> <input type="date" name="date" value="{{service?.date}}" id="date" ngModel required #date="ngModel"><br>
+  <label for="longitude">Longitude: </label><input name="longitude" value="{{service?.longitude}}" id="longitude" ngModel required #longitude="ngModel"><br>
+  <label for="latitude">Latitude: </label><input name="latitude" value="{{service?.latitude}}" id="latitude" ngModel required #latitude="ngModel"><br>
+  <button>Update</button>
+</form>
+

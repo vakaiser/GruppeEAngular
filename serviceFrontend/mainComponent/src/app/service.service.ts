@@ -9,15 +9,20 @@ export class ServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public sendGetRequest(serviceId : Number) {
+  public getServiceInfo(serviceId : Number) {
     return this.httpClient.get<Service>("http://localhost:8080/serviceBackend/services/"+serviceId)
+  }
+
+  public puServiceInfo(serviceId : Number, service : Service) {
+    return this.httpClient.put<Employee>("http://localhost:8080/serviceBackend/services/"+serviceId, service);
   }
 }
 
 export interface Service {
   id: Number;
-  serviceName: string;
+  serviceName: String;
   date: Date;
   longitude: Number;
   latitude: Number;
+  employeeId: Number;
 }
