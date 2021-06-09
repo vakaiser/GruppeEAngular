@@ -1,0 +1,11 @@
+<form #f="ngForm" (ngSubmit)="onSave(f)" novalidate>
+  <label for="serviceName">Name: </label><input name="serviceName" id="serviceName" ngModel required #serviceName="ngModel"><br>
+  <label for="date">Date: </label> <input type="date" name="date" id="date" ngModel required #date="ngModel"><br>
+  <label for="address">Address: </label><input name="address" id="address" #address1> <button type="button" (click)="addressButtonEvent(address1.value)">Parse address to longitude and latitude</button><br>
+  <label for="longitude">Longitude: </label><input name="longitude" id="longitude" [value]="longitude" ngModel required #longitude="ngModel"><br>
+  <label for="latitude">Latitude: </label><input name="latitude" id="latitude" [value]="latitude" ngModel required #latitude="ngModel"><br>
+  <label for="employee">Employee: </label><select id="employee" name="employee" ngModel required #employee="ngModel">
+    <option *ngFor="let e of employees" [ngValue]="e">{{e.name}}</option>
+  </select><br>
+  <button>Send</button>
+</form>
