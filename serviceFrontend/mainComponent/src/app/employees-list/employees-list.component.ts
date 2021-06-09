@@ -10,7 +10,6 @@ export class EmployeesListComponent implements OnInit{
 
 
   dtOptions: DataTables.Settings = {};
-  employeeId: number = -1;
 
   constructor(private http: HttpClient, private elRef: ElementRef) {
 

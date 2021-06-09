@@ -4,13 +4,13 @@ import { Router, ActivatedRoute, RouterModule } from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
+import {ServiceComponentComponent} from "./service-component/service-component.component";
 import { DataTablesModule } from "angular-datatables";
 import { FormsModule, NgModel } from "@angular/forms";
 import { ServiceListComponent } from './service-list/service-list.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { EditServiceComponent } from './edit-service/edit-service.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DeleteLinkComponent } from './delete-link/delete-link.component';
 import { MapComponent } from './map/map.component';
 
 @NgModule({
@@ -24,11 +24,13 @@ import { MapComponent } from './map/map.component';
       {path: 'service-list', component: ServiceListComponent},
       {path: 'edit-employee', component: EditEmployeeComponent},
       {path: 'edit-service', component: EditServiceComponent},
+      {path: 'service-component', component: ServiceComponentComponent},
       {path: '', redirectTo: '/employee-list', pathMatch: 'full'}
     ])
   ],
   providers: [],
-  declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, DeleteLinkComponent, MapComponent],
+  declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, ServiceComponentComponent, MapComponent],
+
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })
