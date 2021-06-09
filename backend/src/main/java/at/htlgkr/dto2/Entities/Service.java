@@ -21,4 +21,8 @@ public class Service implements Serializable {
     private Date date;
     private String longitude;
     private String latitude;
+
+    public Integer getEmployeeId() {
+        return employee.getId();
+    }
 }
