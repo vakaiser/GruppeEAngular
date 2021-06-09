@@ -22,6 +22,7 @@ export interface Service {
   id: Number;
   serviceName: String;
   date: Date;
+  address: String;
   longitude: Number;
   latitude: Number;
   employeeId: Number;

@@ -25,3 +25,12 @@ export interface Employee {
   latitude: Number;
   services: Service[];
 }
+
+export interface Address {
+  address: String;
+}
+
+export interface Lonlat {
+  lon: Number;
+  lat: Number;
+}
