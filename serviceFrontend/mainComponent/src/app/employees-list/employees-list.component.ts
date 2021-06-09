@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-employees-list',
@@ -7,6 +8,9 @@ import {Component, OnInit} from '@angular/core';
 export class EmployeesListComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
+  constructor(private http: HttpClient) {
+
+  }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -35,15 +39,12 @@ export class EmployeesListComponent implements OnInit {
         render: function(data, type, row, meta) {return "<a href=\"/edit-employee?employeeId="+row.id+"\">Edit</a>";}
       }, {
         title: "Delete",
-        render: function(data, type, row, meta) {return "<a [routerLink]=\"\" (click)=\"deleteEmployee("+row.id+")\">Delete</a>";}
+        render: function(data, type, row, meta) {return "<a href='#' [routerLink]=\"\" (click)=\"deleteEmployee("+row.id+")\">Delete</a>";}
       }]
     };
   }
 
   deleteEmployee(id: number){
-    ajax: {
-      url: "http://localhost:8080/serviceBackend/employees/"+ id,
-        dataSrc: ""
-    }
+    this.http.delete("http://localhost:8080/serviceBackend/employees/"+id);
   }
 }
