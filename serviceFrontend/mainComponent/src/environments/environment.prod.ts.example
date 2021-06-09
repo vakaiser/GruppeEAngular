@@ -1,4 +1,0 @@
-export const environment = {
-  production: true,
-  GM_API_KEY: 'API_KEY'
-};
