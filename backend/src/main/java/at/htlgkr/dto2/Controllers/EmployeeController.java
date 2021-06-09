@@ -45,4 +45,17 @@ public class EmployeeController {
         employeeRepository.save(pantsInDB);
         return pantsInDB;
     }
+
+    @DeleteMapping("serviceBackend/employees/{employeeId}")
+    @ResponseBody
+    String deleteEmployee(@PathVariable Integer employeeId)
+    {
+        if(employeeRepository.findById(employeeId).isPresent()) {
+            employeeRepository.deleteById(employeeId);
+            return "Delete succeded";
+        }else
+        {
+            return "Delete failed";
+        }
+    }
 }
