@@ -11,6 +11,7 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { EditServiceComponent } from './edit-service/edit-service.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeleteLinkComponent } from './delete-link/delete-link.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { DeleteLinkComponent } from './delete-link/delete-link.component';
     ])
   ],
   providers: [],
-  declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, DeleteLinkComponent],
+  declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, DeleteLinkComponent, MapComponent],
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })
