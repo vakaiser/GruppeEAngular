@@ -23,14 +23,17 @@ export class EditEmployeeComponent implements OnInit {
     console.log(f.value);
 
     var employee = this.employee as Employee;
-    employee.name = f.value.name as String;
-    employee.latitude = f.value.latitude as Number;
-    employee.longitude = f.value.longitude as Number;
+    if (f.value.name !== "")
+      employee.name = f.value.name as String;
+    if (f.value.latitude !== "")
+      employee.latitude = f.value.latitude as Number;
+    if (f.value.longitude !== "")
+      employee.longitude = f.value.longitude as Number;
     console.log(employee)
 
     const body = employee;
     this.employeeService.putEmployeeInfo(this.employeeId, employee).subscribe(data => {
-      this.router.navigate(['/employees-list']);
+      this.router.navigate(['/employee-list']);
     });
   }
 
