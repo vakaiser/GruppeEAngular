@@ -28,10 +28,16 @@ export class AddEmployeeComponent implements OnInit {
 
     if (f.value.name !== "")
       employee.name = f.value.name as string;
-    if (f.value.longitude !== "")
-      employee.longitude = f.value.longitude as number;
-    if (f.value.latitude !== "")
-      employee.latitude = f.value.latitude as number;
+    if (f.value.lon !== "")
+      employee.longitude = f.value.lon as number;
+    else
+      employee.longitude = this.longitude;
+    if (f.value.lat !== "")
+      employee.latitude = f.value.lat as number;
+    else
+      employee.latitude = this.latitude;
+
+    console.log(employee);
 
     this.employeeService.postEmployeeInfo(employee).subscribe(data => {
       this.router.navigate(['/employee-list']);
@@ -39,7 +45,10 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   addressButtonEvent(address: string) : void {
-    this.locationIQService.getGps({address: address}, (data: Lonlat) => {this.latitude=data.lat; this.longitude=data.lon})
+    this.locationIQService.getGps({address: address}, (data: Lonlat) => {
+      this.latitude=data.lat;
+      this.longitude=data.lon;
+    })
   }
 
 }

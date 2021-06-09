@@ -1,7 +1,7 @@
 <form #f="ngForm" (ngSubmit)="onSave(f)" novalidate>
   <label for="name">Name: </label><input name="name" id="name" ngModel required #name="ngModel"><br>
   <label for="address">Address: </label><input name="address" id="address" #address1> <button type="button" (click)="addressButtonEvent(address1.value)">Parse address to longitude and latitude</button><br>
-  <label for="latitude">Latitude: </label> <input type="number" name="latitude" id="latitude" value="{{latitude}}" ngModel required #latitude="ngModel"><br>
-  <label for="longitude">Longitude: </label><input type="number" name="longitude" id="longitude" value="{{longitude}}" ngModel required #longitude="ngModel"><br>
+  <label for="latitude">Latitude: </label> <input type="number" name="lat" id="latitude" value="{{latitude}}" ngModel required #lat="ngModel"><br>
+  <label for="longitude">Longitude: </label><input type="number" name="lon" id="longitude" value="{{longitude}}" ngModel required #lon="ngModel"><br>
   <button type="submit">Send</button>
 </form>

@@ -36,12 +36,18 @@ export class AddServiceComponent implements OnInit {
       service.serviceName = f.value.serviceName as string;
     if (f.value.date !== "")
       service.date = f.value.date as Date;
-    if (f.value.longitude !== "")
-      service.longitude = f.value.longitude as number;
-    if (f.value.latitude !== "")
-      service.latitude = f.value.latitude as number;
+    if (f.value.lon !== "")
+      service.longitude = f.value.lon as number;
+    else
+      service.longitude = this.longitude;
+    if (f.value.lat !== "")
+      service.latitude = f.value.lat as number;
+    else
+      service.latitude = this.latitude;
     if (f.value.employee !== null)
       service.employeeId = f.value.employee.id as number;
+
+    console.log(service);
 
     this.serviceService.postServiceInfo(service).subscribe(data => {
       this.router.navigate(['/service-list']);
