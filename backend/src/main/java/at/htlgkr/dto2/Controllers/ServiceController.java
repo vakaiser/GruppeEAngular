@@ -8,6 +8,7 @@ import at.htlgkr.dto2.Repositories.ServiceRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +54,7 @@ public class ServiceController {
                     oldService.setDate(service.getDate());
                     oldService.setLatitude(service.getLatitude());
                     oldService.setLongitude(service.getLongitude());
-                    oldService.setEmployee(service.getEmployee());
+                    if(service.getEmployee()!=null) oldService.setEmployee(service.getEmployee());
                     oldService.setServiceName(service.getServiceName());
                     return serviceRepository.save(oldService);
                 }).orElseThrow(() -> new Dto2ResourceNotFoundException("Service not found"));
