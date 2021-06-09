@@ -3,10 +3,13 @@ package at.htlgkr.dto2.Controllers;
 import at.htlgkr.dto2.Entities.Employee;
 import at.htlgkr.dto2.Exceptions.Dto2ResourceNotFoundException;
 import at.htlgkr.dto2.Repositories.EmployeeRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
@@ -48,14 +51,13 @@ public class EmployeeController {
 
     @DeleteMapping("serviceBackend/employees/{employeeId}")
     @ResponseBody
-    String deleteEmployee(@PathVariable Integer employeeId)
+    ResponseEntity deleteEmployee(@PathVariable Integer employeeId)
     {
-        if(employeeRepository.findById(employeeId).isPresent()) {
-            employeeRepository.deleteById(employeeId);
-            return "Delete succeded";
-        }else
-        {
-            return "Delete failed";
+        Optional<Employee> emp = employeeRepository.findById(employeeId);
+        if(emp.isPresent()) {
+            employeeRepository.delete(emp.get());
+            return ResponseEntity.ok().build();
         }
+        return ResponseEntity.badRequest().build();
     }
 }
