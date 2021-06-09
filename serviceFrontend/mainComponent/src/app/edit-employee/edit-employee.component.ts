@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Employee, EmployeeService} from "../employee.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-edit-employee',
@@ -12,7 +12,9 @@ export class EditEmployeeComponent implements OnInit {
 
   employee: Employee | undefined;
   employeeId: Number = -1;
-  constructor(private route : ActivatedRoute, private employeeService: EmployeeService) { }
+  constructor(private route : ActivatedRoute,
+              private router : Router,
+              private employeeService: EmployeeService) { }
 
   onSave(f: NgForm): void {
     if (this.employeeId == -1)
@@ -24,8 +26,12 @@ export class EditEmployeeComponent implements OnInit {
     employee.name = f.value.name as String;
     employee.latitude = f.value.latitude as Number;
     employee.longitude = f.value.longitude as Number;
+    console.log(employee)
 
     const body = employee;
+    this.employeeService.putEmployeeInfo(this.employeeId, employee).subscribe(data => {
+      this.router.navigate(['/employees-list']);
+    });
   }
 
   ngOnInit(): void {

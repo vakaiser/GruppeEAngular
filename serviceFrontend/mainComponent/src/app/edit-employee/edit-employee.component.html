@@ -1,7 +1,7 @@
 <form #f="ngForm" (ngSubmit)="onSave(f)" novalidate>
-  <label for="name">Name: </label><input name="name" id="name" ngModel required #name="ngModel"><br>
-  <label for="latitude">Latitude: </label> <input name="latitude" id="latitude" ngModel required #latitude="ngModel"><br>
-  <label for="longitude">Longitude: </label><input name="longitude" id="longitude" ngModel required #longitude="ngModel"><br>
+  <label for="name">Name: </label><input name="name" value="{{employee?.name}}" id="name" ngModel required #name="ngModel"><br>
+  <label for="latitude">Latitude: </label> <input name="latitude" value="{{employee?.latitude}}" id="latitude" ngModel required #latitude="ngModel"><br>
+  <label for="longitude">Longitude: </label><input name="longitude" value="{{employee?.longitude}}" id="longitude" ngModel required #longitude="ngModel"><br>
   <button>Send</button>
 </form>
 

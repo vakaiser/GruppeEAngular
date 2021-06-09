@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { DataTablesModule } from "angular-datatables";
-import {FormsModule, NgModel} from "@angular/forms";
+import { FormsModule, NgModel } from "@angular/forms";
 import { ServiceListComponent } from './service-list/service-list.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { EditServiceComponent } from './edit-service/edit-service.component';
