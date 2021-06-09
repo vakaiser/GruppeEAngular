@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AgmCoreModule } from "@agm/core";
 
 @Component({
   selector: 'app-map',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+  latitude: number = 47;
+  longitude: number = 26;
 
   constructor() { }
 
