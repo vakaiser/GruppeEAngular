@@ -30,6 +30,9 @@ export class EmployeesListComponent implements OnInit {
         title: "Services",
         data: "services",
         render: function(data, type, row, meta) {return "<a href=\"/service-list?employeeId="+row.id+"\">"+row.services.length+"</a>";}
+      }, {
+        title: "Edit",
+        render: function(data, type, row, meta) {return "<a href=\"/edit-employee?employeeId="+row.id+"\">Edit</a>";}
       }]
     };
   }

@@ -33,4 +33,16 @@ public class EmployeeController {
     @ResponseBody Employee postEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
+
+    @PutMapping("/serviceBackend/employees/{employeeId}")
+    @ResponseBody
+    Employee putEmployee(@PathVariable Integer employeeId, @RequestBody Employee employee) {
+        Employee pantsInDB = employeeRepository.findById(employeeId).get();
+        pantsInDB.setName(employee.getName());
+        pantsInDB.setLatitude(employee.getLatitude());
+        pantsInDB.setLongitude(employee.getLongitude());
+        pantsInDB.setServices(employee.getServices());
+        employeeRepository.save(pantsInDB);
+        return pantsInDB;
+    }
 }
