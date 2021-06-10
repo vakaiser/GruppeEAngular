@@ -4,7 +4,6 @@ import { Router, ActivatedRoute, RouterModule } from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
-import {ServiceComponentComponent} from "./service-component/service-component.component";
 import { DataTablesModule } from "angular-datatables";
 import { FormsModule, NgModel } from "@angular/forms";
 import { ServiceListComponent } from './service-list/service-list.component';
@@ -40,7 +39,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
       {path: 'add-service', component: AddServiceComponent},
       {path: 'edit-employee', component: EditEmployeeComponent},
       {path: 'edit-service', component: EditServiceComponent},
-      {path: 'service-component', component: ServiceComponentComponent},
       {path: 'map', component: MapComponent},
       {path: '', redirectTo: '/employee-list', pathMatch: 'full'}
     ]),
@@ -51,7 +49,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatToolbarModule
   ],
   providers: [],
-  declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, ServiceComponentComponent, MapComponent, AddServiceComponent, AddEmployeeComponent],
+  declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, MapComponent, AddServiceComponent, AddEmployeeComponent],
 
   exports: [RouterModule],
   bootstrap: [AppComponent]
