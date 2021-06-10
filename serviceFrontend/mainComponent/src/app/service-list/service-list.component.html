@@ -2,6 +2,9 @@
   <span>Service list</span>
 </mat-toolbar>
 <br>
+
+<div class="content">
 <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
 <a [routerLink]="['/employee-list']">Back to employee list</a><br>
 <a [routerLink]="['/add-service']">Add service</a>
+</div>

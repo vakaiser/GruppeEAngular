@@ -2,14 +2,16 @@
   <span>Add service</span>
 </mat-toolbar>
 
+<div class="content">
 <form #f="ngForm" (ngSubmit)="onSave(f)" novalidate>
-  <mat-form-field appearance="fill"><mat-label for="serviceName">Name: </mat-label><input matInput name="serviceName" id="serviceName" ngModel required #serviceName="ngModel"></mat-form-field><br>
-  <mat-form-field appearance="fill"><mat-label for="date">Date: </mat-label> <input matInput type="date" name="date" id="date" ngModel required #date="ngModel"></mat-form-field><br>
-  <mat-form-field appearance="fill"><mat-label for="address">Address: </mat-label><input matInput name="address" id="address" #address1></mat-form-field> <button mat-raised-button type="button" (click)="addressButtonEvent(address1.value)">Parse address to longitude and latitude</button><br>
-  <mat-form-field appearance="fill"><mat-label for="longitude">Longitude: </mat-label><input matInput name="lon" id="longitude" value="{{longitude}}" ngModel required #lon="ngModel"></mat-form-field>
-  <mat-form-field appearance="fill"><mat-label for="latitude">Latitude: </mat-label><input matInput name="lat" id="latitude" value="{{latitude}}" ngModel required #lat="ngModel"></mat-form-field><br>
-  <mat-form-field appearance="fill"><mat-label for="employee">Employee: </mat-label><mat-select id="employee" name="employee" ngModel required #employee="ngModel">
+  <mat-form-field style="width: 50%" appearance="fill"><mat-label for="serviceName">Name: </mat-label><input matInput name="serviceName" id="serviceName" ngModel required #serviceName="ngModel"></mat-form-field>
+  <mat-form-field style="width: 50%" appearance="fill"><mat-label for="date">Date: </mat-label> <input matInput type="date" name="date" id="date" ngModel required #date="ngModel"></mat-form-field><br>
+  <mat-form-field style="width: 100%" appearance="fill"><mat-label for="address">Address: </mat-label><input matInput name="address" id="address" #address1></mat-form-field> <button mat-raised-button type="button" (click)="addressButtonEvent(address1.value)">Parse address to longitude and latitude</button><br><br>
+  <mat-form-field style="width: 50%" appearance="fill"><mat-label for="longitude">Longitude: </mat-label><input matInput name="lon" id="longitude" value="{{longitude}}" ngModel required #lon="ngModel"></mat-form-field>
+  <mat-form-field style="width: 50%" appearance="fill"><mat-label for="latitude">Latitude: </mat-label><input matInput name="lat" id="latitude" value="{{latitude}}" ngModel required #lat="ngModel"></mat-form-field><br>
+  <mat-form-field style="width: 100%" appearance="fill"><mat-label for="employee">Employee: </mat-label><mat-select id="employee" name="employee" ngModel required #employee="ngModel">
     <option *ngFor="let e of employees" [ngValue]="e">{{e.name}}</option>
   </mat-select></mat-form-field><br>
   <button mat-raised-button>Send</button>
 </form>
+</div>
