@@ -10,7 +10,7 @@ import {Title} from "@angular/platform-browser";
 export class EmployeesListComponent implements OnInit{
 
 
-  dtOptions: DataTables.Settings = {};
+  dtOptions: any = {};
 
   constructor(private http: HttpClient, private elRef: ElementRef, private titleService: Title) {
 
@@ -20,7 +20,7 @@ export class EmployeesListComponent implements OnInit{
     this.titleService.setTitle("Employees list");
 
     this.dtOptions = {
-      "initComplete": (settings,json)=>{
+      "initComplete": (settings:any,json:any)=>{
         console.log(this.elRef.nativeElement.querySelectorAll(".delete"));
         this.elRef.nativeElement.querySelectorAll(".delete").forEach( (x:any) =>
           x.addEventListener("click", this.deleteEmployee.bind( this, (x.getAttribute("attr-id") ))));    },
@@ -43,17 +43,21 @@ export class EmployeesListComponent implements OnInit{
       }, {
         title: "Services",
         data: "services",
-        render: function(data, type, row, meta) {return "<a href=\"/service-list?employeeId="+row.id+"\">"+row.services.length+"</a>";}
+        render: function(data:any, type:any, row:any, meta:any) {return "<a href=\"/service-list?employeeId="+row.id+"\">"+row.services.length+"</a>";}
       }, {
         title: "Edit",
-        render: function(data, type, row, meta) {return "<a href=\"/edit-employee?employeeId="+row.id+"\">Edit</a>";}
+        render: function(data:any, type:any, row:any, meta:any) {return "<a href=\"/edit-employee?employeeId="+row.id+"\">Edit</a>";}
       }, {
         title: "Delete",
-        render: function(data, type, row, meta) {return "<a attr-id='"+ row.id +"' class='delete' href='javascript:void(0)'>Delete</a>";}
+        render: function(data:any, type:any, row:any, meta:any) {return "<a attr-id='"+ row.id +"' class='delete' href='javascript:void(0)'>Delete</a>";}
       }, {
         title: "Map",
-        render: function(data, type, row, meta) {return "<a href=\"/map?lat="+row.latitude+"&long="+row.longitude+"&label="+row.name+"\">Map</a>";}
-      }]
+        render: function(data:any, type:any, row:any, meta:any) {return "<a href=\"/map?lat="+row.latitude+"&long="+row.longitude+"&label="+row.name+"\">Map</a>";}
+      }],
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'excel', 'csv', 'print'
+      ]
     };
   }
 
