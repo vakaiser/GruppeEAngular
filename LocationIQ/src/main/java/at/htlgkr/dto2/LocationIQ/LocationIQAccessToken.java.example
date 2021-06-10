@@ -1,0 +1,5 @@
+package at.htlgkr.dto2.LocationIQ;
+
+public class LocationIQAccessToken {
+    public static String access_token = YOUR_ACCESS_TOKEN;
+}

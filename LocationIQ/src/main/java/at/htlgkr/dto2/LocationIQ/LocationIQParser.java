@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class LocationIQParser {
     private RestTemplate restTemplate;
-    private static final String accessToken = "c2185716076e66";
+    private static final String accessToken = LocationIQAccessToken.access_token;
 
     public LocationIQParser() {
         this.restTemplate = new RestTemplate();
