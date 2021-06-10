@@ -33,4 +33,4 @@ build/
 .vscode/
 
 
-/src/main/java/at/htlgkr/dto2/LocationIQ/LocationIQAccessToken
+/src/main/java/at/htlgkr/dto2/LocationIQ/LocationIQAccessToken.java
