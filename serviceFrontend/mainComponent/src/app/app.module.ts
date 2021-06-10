@@ -16,6 +16,11 @@ import {AgmCoreModule} from "@agm/core";
 import {environment} from "../environments/environment";
 import { AddServiceComponent } from './add-service/add-service.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   imports: [
@@ -23,6 +28,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    MatButtonModule,
     AgmCoreModule.forRoot({
       apiKey: environment.GM_API_KEY
     }),
@@ -36,7 +42,11 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
       {path: 'service-component', component: ServiceComponentComponent},
       {path: 'map', component: MapComponent},
       {path: '', redirectTo: '/employee-list', pathMatch: 'full'}
-    ])
+    ]),
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [],
   declarations: [AppComponent, EmployeesListComponent, ServiceListComponent, EditEmployeeComponent, EditServiceComponent, ServiceComponentComponent, MapComponent, AddServiceComponent, AddEmployeeComponent],

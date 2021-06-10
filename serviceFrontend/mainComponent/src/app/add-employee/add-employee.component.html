@@ -1,7 +1,7 @@
 <form #f="ngForm" (ngSubmit)="onSave(f)" novalidate>
-  <label for="name">Name: </label><input name="name" id="name" ngModel required #name="ngModel"><br>
-  <label for="address">Address: </label><input name="address" id="address" #address1> <button type="button" (click)="addressButtonEvent(address1.value)">Parse address to longitude and latitude</button><br>
-  <label for="latitude">Latitude: </label> <input type="number" name="lat" id="latitude" value="{{latitude}}" ngModel required #lat="ngModel"><br>
-  <label for="longitude">Longitude: </label><input type="number" name="lon" id="longitude" value="{{longitude}}" ngModel required #lon="ngModel"><br>
-  <button type="submit">Send</button>
+  <mat-form-field appearance="fill"><mat-label for="name">Name: </mat-label><input matInput name="name" id="name" ngModel required #name="ngModel"></mat-form-field><br>
+  <mat-form-field appearance="fill"><mat-label for="address">Address: </mat-label><input matInput name="address" id="address" #address1></mat-form-field><button mat-raised-button type="button" (click)="addressButtonEvent(address1.value)">Parse address to longitude and latitude</button><br>
+  <mat-form-field appearance="fill"><mat-label for="latitude">Latitude: </mat-label> <input matInput type="number" name="lat" id="latitude" value="{{latitude}}" ngModel required #lat="ngModel"></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label for="longitude">Longitude: </mat-label><input matInput type="number" name="lon" id="longitude" value="{{longitude}}" ngModel required #lon="ngModel"></mat-form-field><br>
+  <button mat-raised-button type="submit">Send</button>
 </form>
