@@ -1,9 +1,9 @@
 <form [hidden]="service == undefined" #f="ngForm" (ngSubmit)="onSave(f)" novalidate>
-  <label for="serviceName">Name: </label><input name="serviceName" value="{{service?.serviceName}}" id="serviceName" ngModel required #serviceName="ngModel"><br>
-  <label for="date">Date: </label> <input type="date" name="date" value="{{service?.date}}" id="date" ngModel required #date="ngModel"><br>
-  <label for="address">Address: </label><input name="address" value="{{address}}" id="address" #address1> <button type="button" (click)="addressButtonEvent(address1.value)">Parse address to longitude and latitude</button><br>
-  <label for="longitude">Longitude: </label><input name="longitude" value="{{service?.longitude}}" id="longitude" ngModel required #longitude="ngModel"><br>
-  <label for="latitude">Latitude: </label><input name="latitude" value="{{service?.latitude}}" id="latitude" ngModel required #latitude="ngModel"><br>
-  <button>Update</button>
+  <mat-form-field appearance="fill"><mat-label for="serviceName">Name: </mat-label><input matInput name="serviceName" value="{{service?.serviceName}}" id="serviceName" ngModel required #serviceName="ngModel"></mat-form-field><br>
+  <mat-form-field appearance="fill"><mat-label for="date">Date: </mat-label> <input matInput type="date" name="date" value="{{service?.date}}" id="date" ngModel required #date="ngModel"></mat-form-field><br>
+  <mat-form-field appearance="fill"><mat-label for="address">Address: </mat-label><input matInput name="address" value="{{address}}" id="address" #address1></mat-form-field> <button mat-raised-button type="button" (click)="addressButtonEvent(address1.value)">Parse address to longitude and latitude</button><br>
+  <mat-form-field appearance="fill"><mat-label for="longitude">Longitude: </mat-label><input matInput name="longitude" value="{{service?.longitude}}" id="longitude" ngModel required #longitude="ngModel"></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label for="latitude">Latitude: </mat-label><input matInput name="latitude" value="{{service?.latitude}}" id="latitude" ngModel required #latitude="ngModel"><br></mat-form-field>
+  <button mat-raised-button>Update</button>
 </form>
 
