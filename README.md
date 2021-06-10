@@ -21,6 +21,8 @@ It has the following pages and features:
 - Editing a service
 - Showing a map to all features
 
+The frontend is started in the CLI in the folder "serviceFrontend/mainComponent" with the command: "ng serve --open"
+
 ## Google API Key
 To set up your Google Maps JS API key, rename the [environment.ts.example](https://github.com/vakaiser/GruppeEAngular/blob/main/serviceFrontend/mainComponent/src/environments/environment.ts.example) to `environment.ts` and set up your API key in there.
 
@@ -30,3 +32,5 @@ The service can communicate with the LocationIQ API to handle GPS-Coordinates be
 
 ### EmployeeService Backend
 The main backend of the site. Uses 8080 as the default port.
+
+both microservices can be started in the CLI in the folder "LocationIQ" or "backend" with the commad "mvn spring-boot:run"
