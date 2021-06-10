@@ -1,3 +1,3 @@
 # HelloWorld
 
-HelloWorld wo man mit einem Button den Text umändern kann.
+With this program you can change a text via input and text-click.
