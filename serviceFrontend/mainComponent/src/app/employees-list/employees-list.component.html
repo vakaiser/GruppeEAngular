@@ -2,6 +2,9 @@
   <span>Employee list</span>
 </mat-toolbar>
 <br>
+
+<div class="content">
 <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
 <a [routerLink]="['/service-list']">All services</a><br>
 <a [routerLink]="['/add-employee']">Add employee</a>
+</div>
