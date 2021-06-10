@@ -5,6 +5,7 @@ import {Employee, EmployeeService} from "../employee.service";
 import {Service, ServiceService} from "../service.service";
 import {NgForm} from "@angular/forms";
 import {Address, LocationIQService, Lonlat} from "../location-iq.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-edit-service',
@@ -20,7 +21,8 @@ export class EditServiceComponent implements OnInit {
               private router : Router,
               private serviceService: ServiceService,
               private http: HttpClient,
-              private locationIQService : LocationIQService) { }
+              private locationIQService : LocationIQService,
+              private titleService: Title) { }
 
   onSave(f: NgForm): void {
     if (this.serviceId == -1)
@@ -46,6 +48,8 @@ export class EditServiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Edit service");
+
     this.route.queryParams.subscribe(params => {
       this.serviceId = params['serviceId'];
       this.serviceService.getServiceInfo(this.serviceId).subscribe((data: Service)=>{

@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DataTableDirective} from "angular-datatables";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-employees-list',
@@ -11,11 +12,13 @@ export class EmployeesListComponent implements OnInit{
 
   dtOptions: DataTables.Settings = {};
 
-  constructor(private http: HttpClient, private elRef: ElementRef) {
+  constructor(private http: HttpClient, private elRef: ElementRef, private titleService: Title) {
 
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Employees list");
+
     this.dtOptions = {
       "initComplete": (settings,json)=>{
         console.log(this.elRef.nativeElement.querySelectorAll(".delete"));

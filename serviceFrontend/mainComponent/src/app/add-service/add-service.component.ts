@@ -4,6 +4,7 @@ import {Service, ServiceService} from "../service.service";
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Employee, EmployeeService} from "../employee.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-add-service',
@@ -20,9 +21,11 @@ export class AddServiceComponent implements OnInit {
     private locationIQService : LocationIQService,
     private serviceService: ServiceService,
     private employeeService: EmployeeService,
-    private router : Router) { }
+    private router : Router,
+    private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Add service");
     this.employeeService.getEmployees().subscribe(data => {
       console.log(data);
       this.employees = data;

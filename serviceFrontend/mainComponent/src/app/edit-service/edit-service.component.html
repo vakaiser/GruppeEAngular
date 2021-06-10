@@ -1,3 +1,7 @@
+<mat-toolbar>
+  <span>Edit service {{service?.serviceName}}</span>
+</mat-toolbar>
+
 <form *ngIf="service;else loading" #f="ngForm" (ngSubmit)="onSave(f)" novalidate>
   <mat-form-field appearance="fill"><mat-label for="serviceName">Name: </mat-label><input matInput name="serviceName" value="{{service.serviceName}}" id="serviceName" ngModel required #serviceName="ngModel"></mat-form-field><br>
   <mat-form-field appearance="fill"><mat-label for="date">Date: </mat-label> <input matInput type="date" name="date" value="{{service.date}}" id="date" ngModel required #date="ngModel"></mat-form-field><br>

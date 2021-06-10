@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-map',
@@ -11,9 +12,11 @@ export class MapComponent implements OnInit {
   longitude: number = 0;
   label: string = "";
 
-  constructor(private route : ActivatedRoute, private cdRef:ChangeDetectorRef) { }
+  constructor(private route : ActivatedRoute, private cdRef:ChangeDetectorRef, private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle("Map");
+
     this.route.queryParams.subscribe(params => {
       this.latitude = Number(params['lat']);
       this.longitude = Number(params['long']);

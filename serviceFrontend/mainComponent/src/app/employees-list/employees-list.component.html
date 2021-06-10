@@ -1,3 +1,7 @@
+<mat-toolbar>
+  <span>Employee list</span>
+</mat-toolbar>
+<br>
 <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
-<a href="/service-list">All services</a><br>
-<a href="/add-employee">Add employee</a>
+<a [routerLink]="['/service-list']">All services</a><br>
+<a [routerLink]="['/add-employee']">Add employee</a>

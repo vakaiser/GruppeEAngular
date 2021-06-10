@@ -4,6 +4,7 @@ import {Employee, EmployeeService} from "../employee.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {LocationIQService, Lonlat} from "../location-iq.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-edit-employee',
@@ -19,7 +20,8 @@ export class EditEmployeeComponent implements OnInit {
               private router : Router,
               private employeeService: EmployeeService,
               private http: HttpClient,
-              private locationIQService : LocationIQService
+              private locationIQService : LocationIQService,
+              private titleService: Title
   ) { }
 
   onSave(f: NgForm): void {
@@ -44,6 +46,8 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Edit employee");
+
     this.route.queryParams.subscribe(params => {
       this.employeeId = params['employeeId'];
       this.employeeService.getEmployeeInfo(this.employeeId).subscribe((data: Employee)=>{
